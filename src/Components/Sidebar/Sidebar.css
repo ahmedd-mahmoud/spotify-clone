@@ -1,0 +1,51 @@
+.upper-sidebar {
+  width: 300px;
+  height: 150px;
+  background-color: #232323;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.lower-sidebar {
+  width: 300px;
+  height: 440px;
+  background-color: #232323;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.buttons {
+  font-size: 20px;
+  margin-left: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.headline {
+  display: flex;
+  gap: 35px;
+}
+
+.headline-part1 {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0 0 20px;
+  font-size: 20px;
+}
+
+.headline-part2 {
+  display: flex;
+  gap: 15px;
+  margin: 18px 0 0 20px;
+}
+
+.icons {
+  font-size: 25px;
+}

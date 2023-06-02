@@ -1,0 +1,9 @@
+.songs-screen {
+  width: 1205px;
+  height: 600px;
+  background-color: #232323;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

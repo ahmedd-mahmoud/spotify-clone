@@ -1,0 +1,12 @@
+.player {
+  width: 1515px;
+  height: 60px;
+  color: white;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  background-color: #232323;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
