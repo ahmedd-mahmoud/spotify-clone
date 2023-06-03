@@ -1,0 +1,30 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #1db954;
+  width: 100vw;
+  height: 100vh;
+  gap: 80px;
+}
+
+.logo {
+  width: 600px;
+}
+
+.login-button {
+  font-size: 30px;
+  width: 350px;
+  border-radius: 50px;
+  background-color: black;
+  color: #20d35f;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 5px 5px 5px 5px;
+}
+
+.login-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
