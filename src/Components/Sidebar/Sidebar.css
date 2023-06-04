@@ -17,8 +17,11 @@
   background-color: #232323;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  gap: 30px;
+  overflow: hidden;
 }
 
 .buttons {
@@ -48,4 +51,24 @@
 
 .icons {
   font-size: 25px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.filter-button {
+  background-color: rgba(196, 187, 187, 0.1);
+  color: white;
+  border: none;
+  width: 75px;
+  height: 30px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: rgba(196, 187, 187, 0.2);
 }

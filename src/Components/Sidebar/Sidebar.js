@@ -1,7 +1,11 @@
-import "./Sidebar.css";
+//components
+import Playlists from "../Playlists/Playlists";
+//icons
 import { MdHomeFilled, MdSearch } from "react-icons/md";
 import { LuLibrary, LuPlus } from "react-icons/lu";
 import { BiRightArrowAlt } from "react-icons/bi";
+//styles
+import "./Sidebar.css";
 
 const Sidebar = () => {
   return (
@@ -27,6 +31,14 @@ const Sidebar = () => {
             <BiRightArrowAlt className="icons" />
           </div>
         </div>
+
+        {/* the button should be a separate component */}
+        <div className="filters">
+          <button className="filter-button">Playlists</button>
+          <button className="filter-button">Albums</button>
+          <button className="filter-button">Artists</button>
+        </div>
+        <Playlists />
       </div>
     </div>
   );
