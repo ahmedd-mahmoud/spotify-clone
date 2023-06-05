@@ -54,8 +54,7 @@ const UseFetchSpotifyData = (url, spotifyData) => {
         setError(null);
         if (spotifyData === SPOTIFY_DATA.playlistsData) {
           getPlaylistData(data);
-        }
-        if (spotifyData === SPOTIFY_DATA.userData) {
+        } else if (spotifyData === SPOTIFY_DATA.userData) {
           getUserData(data);
         }
       } catch (err) {
