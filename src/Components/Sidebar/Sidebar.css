@@ -30,11 +30,18 @@
   display: flex;
   gap: 15px;
   align-items: center;
+  color: #a1a1a1;
+  cursor: pointer;
+}
+.buttons:hover {
+  color: white;
 }
 
 .headline {
   display: flex;
   gap: 35px;
+  color: #a1a1a1;
+  cursor: pointer;
 }
 
 .headline-part1 {
@@ -49,6 +56,19 @@
   display: flex;
   gap: 15px;
   margin: 15px 0 0 20px;
+}
+.plus-icon,
+.arrow-icon {
+  font-size: 25px;
+}
+
+.plus-icon:hover,
+.arrow-icon:hover {
+  color: white;
+}
+
+.headline-part1:hover {
+  color: white;
 }
 
 .icons {

@@ -27,8 +27,8 @@ const Sidebar = () => {
             <span>Your Library</span>
           </div>
           <div className="headline-part2">
-            <LuPlus className="icons" />
-            <BiRightArrowAlt className="icons" />
+            <LuPlus className="plus-icon" />
+            <BiRightArrowAlt className="arrow-icon" />
           </div>
         </div>
 
