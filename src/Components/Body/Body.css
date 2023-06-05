@@ -1,9 +1,82 @@
-.songs-screen {
+.body {
   width: 1205px;
   height: 600px;
   background-color: #232323;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 50px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar-and-friends {
+  display: flex;
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px 10px 15px;
+  margin: 20px 10px 20px 10px;
+  background-color: #101010;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.user-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+}
+
+.user-name {
+  font-size: 14px;
+  color: #a1a1a1;
+}
+.user-name:hover {
+  color: white;
+}
+.friends-button {
+  width: 40px;
+  height: 40px;
+  background-color: #101010;
+  border-radius: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
+  margin: 27px 0 27px 10px;
+}
+
+.friends-icon {
+  width: 20px;
+  height: 20px;
+  color: #a1a1a1;
+  cursor: pointer;
+}
+.friends-icon:hover {
+  color: white;
+}
+
+.both-arrows {
+  display: flex;
+  align-self: flex-start;
+  margin: 27px 20px 27px 20px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.arrow {
+  color: #a1a1a1;
+  background-color: #101010;
+  font-size: 25px;
+  border-radius: 100%;
+  padding: 5px 5px 5px 5px;
+}
+.arrow:hover {
+  color: white;
 }
