@@ -1,33 +1,20 @@
 //hooks
-import { useEffect } from "react";
+import useFetscSpotifyData, {
+  SPOTIFY_DATA,
+} from "../../Hooks/useFetchSpotifyData";
 import { useStateProvider } from "../../Utils/StateProvider";
 //constants
-import { reducerCases } from "../../Utils/Reducer";
+
 //styles
 import "./Playlists.css";
 
 const Playlists = () => {
-  const { token, updateData, playlists } = useStateProvider();
-  useEffect(() => {
-    const getPlaylistsData = async () => {
-      const res = await fetch(
-        "https://api.spotify.com/v1/me/playlists?limit=20&offset=0",
-        {
-          method: "GET",
-          headers: {
-            Authorization: "Bearer " + token,
-            "Content-Type": "application/json",
-          },
-        }
-      ).then((res) => res.json());
-      const { items } = res;
-      const playlists = items.map(({ name, id, images }) => {
-        return { name, id, images };
-      });
-      updateData(playlists, reducerCases.SET_PLAYLISTS);
-    };
-    getPlaylistsData();
-  }, [token, updateData]);
+  const { playlists } = useStateProvider();
+
+  useFetscSpotifyData(
+    "https://api.spotify.com/v1/me/playlists?limit=20&offset=0",
+    SPOTIFY_DATA.playlistsData
+  );
 
   return (
     <div className="all-playlists">
@@ -38,7 +25,7 @@ const Playlists = () => {
               src={images[0].url}
               alt={name}
               className="playlist-img"
-              key={id}
+              key={id + 1}
             />
             <span key={id} className="playlist-name">
               {name}
