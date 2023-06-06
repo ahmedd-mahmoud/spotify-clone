@@ -3,7 +3,7 @@ export const initialState = {
   playlists: [],
   userInfo: null,
   selectedPlaylist: null,
-  selectedPlaylistId: "37i9dQZF1DX0s5kDXi1oC5",
+  selectedPlaylistId: null,
 };
 
 export const reducerCases = {

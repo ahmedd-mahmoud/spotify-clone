@@ -9,7 +9,7 @@ export const SPOTIFY_DATA = {
   selectedPlaylistId: "selectedPlaylistId",
 };
 const useFetchSpotifyData = (url, spotifyData) => {
-  const { token, updateData } = useStateProvider();
+  const { token, updateData, selectedPlaylistId } = useStateProvider();
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
 
@@ -66,10 +66,11 @@ const useFetchSpotifyData = (url, spotifyData) => {
           trackNumber: track.track_number,
         })),
       };
-
-      updateData(selectedPlaylist, reducerCases.SET_PLAYLIST);
+      if (selectedPlaylistId) {
+        updateData(selectedPlaylist, reducerCases.SET_PLAYLIST);
+      }
     },
-    [updateData]
+    [updateData, selectedPlaylistId]
   );
 
   const getData = useCallback(async () => {
