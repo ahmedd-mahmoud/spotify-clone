@@ -3,11 +3,12 @@ import useFetchSpotifyData, {
   SPOTIFY_DATA,
 } from "../../Hooks/useFetchSpotifyData";
 import { useStateProvider } from "../../Utils/StateProvider";
+import { reducerCases } from "../../Utils/Reducer";
 //styles
 import "./Playlists.css";
 
 const Playlists = () => {
-  const { playlists } = useStateProvider();
+  const { playlists, updateData } = useStateProvider();
 
   useFetchSpotifyData(
     "https://api.spotify.com/v1/me/playlists?limit=20&offset=0",
@@ -18,7 +19,13 @@ const Playlists = () => {
     <div className="all-playlists">
       {playlists.map(({ name, id, images }) => {
         return (
-          <div className="single-playlist" key={id}>
+          <div
+            className="single-playlist"
+            key={id}
+            onClick={() => {
+              updateData(id, reducerCases.SET_PLAYLIST_ID);
+            }}
+          >
             <img src={images[0].url} alt={name} className="playlist-img" />
             <span className="playlist-name">{name}</span>
           </div>
