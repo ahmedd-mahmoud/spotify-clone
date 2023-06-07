@@ -8,14 +8,45 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useStateProvider } from "../../Utils/StateProvider";
 
 const Body = () => {
-  const { userInfo, selectedPlaylist, selectedPlaylistId, mainScreen } =
-    useStateProvider();
+  const {
+    userInfo,
+    selectedPlaylist,
+    selectedPlaylistId,
+    mainScreen,
+    featuredPlaylists,
+    artists,
+    albums,
+    podcasts,
+  } = useStateProvider();
+
   useFetchSpotifyData("https://api.spotify.com/v1/me", SPOTIFY_DATA.userData);
 
   useFetchSpotifyData(
     `https://api.spotify.com/v1/playlists/${selectedPlaylistId}`,
     SPOTIFY_DATA.selectedPlaylistData
   );
+
+  useFetchSpotifyData(
+    "https://api.spotify.com/v1/browse/featured-playlists",
+    SPOTIFY_DATA.featuredPlaylistsData
+  );
+
+  // useFetchSpotifyData(
+  //   "https://api.spotify.com/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2C57dN52uHvrHOxijzpIgu3E%2C1vCWHaC5f2uS3yhpwWbIA6",
+  //   SPOTIFY_DATA.artistsData
+  // );
+
+  // useFetchSpotifyData(
+  //   "https://api.spotify.com/v1/albums?ids=382ObEPsp2rxGrnsizN5TX%2C1A2GTWGtFfWp7KSQTwWOyo%2C2noRn2Aes5aoNVsU6iWThc",
+  //   SPOTIFY_DATA.albumsData
+  // );
+
+  // useFetchSpotifyData(
+  //   "https://api.spotify.com/v1/shows?ids=5CfCWKI5pZ28U0uOzXkDHe%2C5as3aKmN2k11yfDDDSrvaZ",
+  //   SPOTIFY_DATA.podcastsData
+  // );
+
+  console.log(featuredPlaylists);
 
   const msToMinutes = (ms) => {
     const min = Math.floor(ms / 60000);
@@ -44,7 +75,9 @@ const Body = () => {
           </div>
         </div>
       </div>
+
       {mainScreen && <div className="main-screen">Main Screen</div>}
+
       {selectedPlaylist && !mainScreen && (
         <div className="playlist-content">
           <div className="playlist-info">

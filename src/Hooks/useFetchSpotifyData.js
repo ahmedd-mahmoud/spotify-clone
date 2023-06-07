@@ -7,6 +7,10 @@ export const SPOTIFY_DATA = {
   userData: "userData",
   selectedPlaylistData: "selectedPlaylistData",
   selectedPlaylistId: "selectedPlaylistId",
+  featuredPlaylistsData: "featuredPlaylistsData",
+  albumsData: "albumsData",
+  artistsData: "artistsData",
+  podcastsData: "podcastsData",
 };
 const useFetchSpotifyData = (url, spotifyData) => {
   const { token, updateData, selectedPlaylistId } = useStateProvider();
@@ -20,6 +24,18 @@ const useFetchSpotifyData = (url, spotifyData) => {
         return { name, id, images };
       });
       updateData(playlists, reducerCases.SET_PLAYLISTS);
+    },
+    [updateData]
+  );
+
+  const getFeaturedPlaylists = useCallback(
+    (data) => {
+      const featuredPlaylists = data.playlists.items.map(
+        ({ name, id, images, description }) => {
+          return { name, id, images, description };
+        }
+      );
+      updateData(featuredPlaylists, reducerCases.SET_FEATURED_PLAYLISTS);
     },
     [updateData]
   );
@@ -73,6 +89,36 @@ const useFetchSpotifyData = (url, spotifyData) => {
     [updateData, selectedPlaylistId]
   );
 
+  const getArtists = useCallback(
+    (data) => {
+      const artists = data.artists.map(({ name, id, images }) => {
+        return { name, id, images };
+      });
+      updateData(artists, reducerCases.SET_ARTISTS);
+    },
+    [updateData]
+  );
+
+  const getAlbums = useCallback(
+    (data) => {
+      const albums = data.albums.map(({ name, id, images, artists }) => {
+        return { name, id, images, artists };
+      });
+      updateData(albums, reducerCases.SET_ALBUMS);
+    },
+    [updateData]
+  );
+
+  const getPodcasts = useCallback(
+    (data) => {
+      const podcasts = data.shows.map(({ name, id, images, publisher }) => {
+        return { name, id, images, publisher };
+      });
+      updateData(podcasts, reducerCases.SET_PODCASTS);
+    },
+    [updateData]
+  );
+
   const getData = useCallback(async () => {
     setIsPending(true);
     try {
@@ -98,6 +144,14 @@ const useFetchSpotifyData = (url, spotifyData) => {
         getSelectedPlaylistId(data);
       } else if (spotifyData === SPOTIFY_DATA.selectedPlaylistData) {
         getSelectedPlaylistData(data);
+      } else if (spotifyData === SPOTIFY_DATA.featuredPlaylistsData) {
+        getFeaturedPlaylists(data);
+      } else if (spotifyData === SPOTIFY_DATA.artistsData) {
+        getArtists(data);
+      } else if (spotifyData === SPOTIFY_DATA.albumsData) {
+        getAlbums(data);
+      } else if (spotifyData === SPOTIFY_DATA.podcastsData) {
+        getPodcasts(data);
       }
     } catch (err) {
       if (err.name === "AbortError") {
@@ -112,6 +166,10 @@ const useFetchSpotifyData = (url, spotifyData) => {
     getUserData,
     getSelectedPlaylistData,
     getSelectedPlaylistId,
+    getFeaturedPlaylists,
+    getAlbums,
+    getArtists,
+    getPodcasts,
     spotifyData,
     token,
     url,
