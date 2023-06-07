@@ -6,12 +6,20 @@ import { LuLibrary, LuPlus } from "react-icons/lu";
 import { BiRightArrowAlt } from "react-icons/bi";
 //styles
 import "./Sidebar.css";
+import { useStateProvider } from "../../Utils/StateProvider";
+import { reducerCases } from "../../Utils/Reducer";
 
 const Sidebar = () => {
+  const { updateData } = useStateProvider();
   return (
     <div className="sidebar">
       <div className="upper-sidebar">
-        <div className="buttons">
+        <div
+          className="buttons"
+          onClick={() => {
+            updateData(true, reducerCases.MAIN_SCREEN);
+          }}
+        >
           <MdHomeFilled className="icons" />
           <span>Home</span>
         </div>

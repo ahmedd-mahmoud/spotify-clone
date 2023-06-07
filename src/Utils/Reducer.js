@@ -4,6 +4,7 @@ export const initialState = {
   userInfo: null,
   selectedPlaylist: null,
   selectedPlaylistId: null,
+  mainScreen: true,
 };
 
 export const reducerCases = {
@@ -12,6 +13,7 @@ export const reducerCases = {
   SET_USER: "SET_USER",
   SET_PLAYLIST: "SET_PLAYLIST",
   SET_PLAYLIST_ID: "SET_PLAYLIST_ID",
+  MAIN_SCREEN: "MAIN_SCREEN",
 };
 
 const reducer = (state, action) => {
@@ -30,6 +32,9 @@ const reducer = (state, action) => {
     }
     case reducerCases.SET_PLAYLIST_ID: {
       return { ...state, selectedPlaylistId: action.payload };
+    }
+    case reducerCases.MAIN_SCREEN: {
+      return { ...state, mainScreen: action.payload };
     }
     default:
       return state;

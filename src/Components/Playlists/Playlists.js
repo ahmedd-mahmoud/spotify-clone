@@ -23,6 +23,7 @@ const Playlists = () => {
             className="single-playlist"
             key={id}
             onClick={() => {
+              updateData(false, reducerCases.MAIN_SCREEN);
               updateData(id, reducerCases.SET_PLAYLIST_ID);
             }}
           >
