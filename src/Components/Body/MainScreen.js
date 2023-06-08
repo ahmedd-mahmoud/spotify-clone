@@ -29,7 +29,129 @@ const MainScreen = () => {
     SPOTIFY_DATA.podcastsData
   );
 
-  return <div className="main-screen">Main Screen</div>;
+  return (
+    <div className="main-screen">
+      <div className="start-up">
+        <span className="title">Good Morning</span>
+      </div>
+      <div className="squares-containers">
+        <div className="squares-headline">
+          <span className="title">Featured Playlists</span>
+          <span className="showall-button">Show all</span>
+        </div>
+
+        <div className="squares">
+          {featuredPlaylists
+            ?.slice(0, 5)
+            .map(({ name, id, images, description }) => {
+              return (
+                <div className="square" key={id}>
+                  <img src={images[0].url} alt={name} className="square-img" />
+                  <span className="square-name">{name}</span>
+                  <span className="square-desc">
+                    {description.length > 25
+                      ? description.slice(0, 25) + "..."
+                      : description}
+                  </span>
+                </div>
+              );
+            })}
+        </div>
+      </div>
+      <div className="squares-containers">
+        <div className="squares-headline">
+          <span className="title">Popular Albums</span>
+          <span className="showall-button">Show all</span>
+        </div>
+
+        <div className="squares">
+          {albums?.map(({ name, id, images, artists }) => {
+            return (
+              <div className="square" key={id}>
+                <img src={images[0].url} alt={name} className="square-img" />
+                <span className="square-name">
+                  {name.length > 17 ? name.slice(0, 17) + "..." : name}
+                </span>
+                <span className="square-desc">{artists[0].name}</span>
+              </div>
+            );
+          })}
+          {albums?.slice(0, 2).map(({ name, id, images, artists }) => {
+            return (
+              <div className="square" key={id}>
+                <img src={images[0].url} alt={name} className="square-img" />
+                <span className="square-name">
+                  {name.length > 17 ? name.slice(0, 17) + "..." : name}
+                </span>
+                <span className="square-desc">{artists[0].name}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="squares-containers">
+        <div className="squares-headline">
+          <span className="title">Popular Artists</span>
+          <span className="showall-button">Show all</span>
+        </div>
+
+        <div className="squares">
+          {artists?.map(({ name, id, images }) => {
+            return (
+              <div className="square" key={id}>
+                <img src={images[0].url} alt={name} className="square-img" />
+                <span className="square-name">{name}</span>
+              </div>
+            );
+          })}
+          {artists?.slice(0, 2).map(({ name, id, images }) => {
+            return (
+              <div className="square" key={id}>
+                <img src={images[0].url} alt={name} className="square-img" />
+                <span className="square-name">{name}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="squares-containers">
+        <div className="squares-headline">
+          <span className="title">Popular Podcasts</span>
+          <span className="showall-button">Show all</span>
+        </div>
+
+        <div className="squares">
+          {podcasts?.map(({ name, id, images, publisher }) => {
+            return (
+              <div className="square" key={id}>
+                <img src={images[0].url} alt={name} className="square-img" />
+                <span className="square-name">{name}</span>
+                <span className="square-desc">{publisher}</span>
+              </div>
+            );
+          })}
+          {podcasts?.map(({ name, id, images, publisher }) => {
+            return (
+              <div className="square" key={id}>
+                <img src={images[0].url} alt={name} className="square-img" />
+                <span className="square-name">{name}</span>
+                <span className="square-desc">{publisher}</span>
+              </div>
+            );
+          })}
+          {podcasts?.slice(0, 1).map(({ name, id, images, publisher }) => {
+            return (
+              <div className="square" key={id}>
+                <img src={images[0].url} alt={name} className="square-img" />
+                <span className="square-name">{name}</span>
+                <span className="square-desc">{publisher}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default MainScreen;
