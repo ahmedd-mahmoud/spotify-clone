@@ -37,6 +37,7 @@
   align-items: center;
   color: #a1a1a1;
   cursor: pointer;
+  padding-right: 150px;
 }
 .buttons:hover {
   color: white;

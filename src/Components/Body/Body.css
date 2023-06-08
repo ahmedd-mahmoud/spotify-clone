@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 15px 10px 15px;
+  padding: 10px 15px 10px 10px;
   margin: 20px 10px 10px 10px;
   background-color: #101010;
   border-radius: 40px;
@@ -83,6 +83,25 @@
 }
 .arrow:hover {
   color: white;
+}
+
+.search-input {
+  width: 400px;
+  height: 50px;
+  border-radius: 50px;
+  padding-left: 40px;
+  margin-top: -9px;
+  background-color: #101010;
+  border: none;
+  color: white;
+}
+.search-icon {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  top: 18%;
+  right: 92%;
+  color: #858585;
 }
 
 /************** Playlist Body ****************/
