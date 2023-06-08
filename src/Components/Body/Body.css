@@ -8,6 +8,7 @@
   justify-content: flex-start;
   gap: 10px;
   overflow: hidden;
+  margin-top: 20px;
 }
 
 /************** Navbar **************/
@@ -254,6 +255,7 @@
 .squares-containers {
   display: flex;
   flex-direction: column;
+  margin-right: 20px;
 }
 
 .squares-headline {
