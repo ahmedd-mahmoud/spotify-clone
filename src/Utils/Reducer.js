@@ -1,3 +1,9 @@
+export const msToMinutes = (ms) => {
+  const min = Math.floor(ms / 60000);
+  const sec = ((ms % 60000) / 1000).toFixed(0);
+  return min + ":" + (sec < 10 ? "0" : "") + sec;
+};
+
 export const initialState = {
   token: null,
   playlists: [],
@@ -9,6 +15,8 @@ export const initialState = {
   albums: null,
   artists: null,
   podcasts: null,
+  searchQuery: "",
+  searchResults: null,
 };
 
 export const reducerCases = {
@@ -22,6 +30,8 @@ export const reducerCases = {
   SET_ALBUMS: "SET_ALBUMS",
   SET_ARTISTS: "SET_ARTISTS",
   SET_PODCASTS: "SET_PODCASTS",
+  SET_SEARCH_QUERY: "SET_SEARCH_QUERY",
+  SET_SEARCH_RESULTS: "SET_SEARCH_RESULTS",
 };
 
 const reducer = (state, action) => {
@@ -55,6 +65,12 @@ const reducer = (state, action) => {
     }
     case reducerCases.SET_PODCASTS: {
       return { ...state, podcasts: action.payload };
+    }
+    case reducerCases.SET_SEARCH_QUERY: {
+      return { ...state, searchQuery: action.payload };
+    }
+    case reducerCases.SET_SEARCH_RESULTS: {
+      return { ...state, searchResults: action.payload };
     }
     default:
       return state;

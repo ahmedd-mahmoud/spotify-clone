@@ -26,7 +26,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/*" element={token ? <Home /> : <Login />}></Route>
+          <Route path="/" element={token ? <Home /> : <Login />}></Route>
           <Route path="search" element={<Search />} />
         </Routes>
       </BrowserRouter>

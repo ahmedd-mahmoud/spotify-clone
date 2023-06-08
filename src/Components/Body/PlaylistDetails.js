@@ -2,15 +2,10 @@
 import "./Body.css";
 //hooks
 import { useStateProvider } from "../../Utils/StateProvider";
-
+import { msToMinutes } from "../../Utils/Reducer";
 const PlaylistContents = () => {
   const { selectedPlaylist } = useStateProvider();
 
-  const msToMinutes = (ms) => {
-    const min = Math.floor(ms / 60000);
-    const sec = ((ms % 60000) / 1000).toFixed(0);
-    return min + ":" + (sec < 10 ? "0" : "") + sec;
-  };
   return (
     <div className="playlist-content">
       <div className="playlist-info">

@@ -11,7 +11,12 @@ export const SPOTIFY_DATA = {
   albumsData: "albumsData",
   artistsData: "artistsData",
   podcastsData: "podcastsData",
+  searchQueryValue: "searchQueryValue",
+  searchResults: "searchResults",
 };
+
+const searchURL = "https://api.spotify.com/v1/search";
+
 const useFetchSpotifyData = (url, spotifyData) => {
   const { token, updateData, selectedPlaylistId } = useStateProvider();
   const [error, setError] = useState(null);
@@ -119,6 +124,43 @@ const useFetchSpotifyData = (url, spotifyData) => {
     [updateData]
   );
 
+  const searchItems = useCallback(
+    async (e) => {
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      const searchResults = {
+        artists: data.artists?.items.map(({ name, id, images }) => ({
+          artistName: name,
+          artistId: id,
+          artistImg: images[0],
+        })),
+        playlists: data.playlists?.items.map(({ name, id, images, owner }) => ({
+          playlistName: name,
+          playlistId: id,
+          playlistImg: images[0],
+          playlistOwner: owner.display_name,
+        })),
+        tracks: data.tracks?.items.map(
+          ({ name, id, album, artists, duration_ms }) => ({
+            trackName: name,
+            trackId: id,
+            trackImage: album.images[2].url,
+            trackArtists: artists.map((artist) => artist.name),
+            trackTime: duration_ms,
+          })
+        ),
+      };
+      updateData(searchResults, reducerCases.SET_SEARCH_RESULTS);
+    },
+    [token, url, updateData]
+  );
+
   const getData = useCallback(async () => {
     setIsPending(true);
     try {
@@ -176,8 +218,12 @@ const useFetchSpotifyData = (url, spotifyData) => {
   ]);
 
   useEffect(() => {
-    getData();
-  }, [getData]);
+    if (url.slice(0, 33) === searchURL) {
+      searchItems();
+    } else {
+      getData();
+    }
+  }, [getData, searchItems, url]);
 
   return { error, isPending };
 };
