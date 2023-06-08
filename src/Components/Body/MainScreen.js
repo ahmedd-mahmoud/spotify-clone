@@ -7,7 +7,8 @@ import useFetchSpotifyData, {
 } from "../../Hooks/useFetchSpotifyData";
 
 const MainScreen = () => {
-  const { featuredPlaylists, artists, albums, podcasts } = useStateProvider();
+  const { featuredPlaylists, artists, albums, podcasts, playlists } =
+    useStateProvider();
 
   useFetchSpotifyData(
     "https://api.spotify.com/v1/browse/featured-playlists",
@@ -32,8 +33,33 @@ const MainScreen = () => {
   return (
     <div className="main-screen">
       <div className="start-up">
-        <span className="title">Good Morning</span>
+        <div>
+          <span className="startup-title">Good Morning</span>
+        </div>
+
+        <div className="rectangles">
+          {playlists?.slice(0, 3).map(({ name, id, images }) => {
+            return (
+              <div className="rectangle" key={id}>
+                <img src={images[0].url} alt={name} className="rec-img" />
+                <span className="rec-name">{name}</span>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="rectangles">
+          {playlists?.slice(3, 6).map(({ name, id, images }) => {
+            return (
+              <div className="rectangle" key={id}>
+                <img src={images[0].url} alt={name} className="rec-img" />
+                <span className="rec-name">{name}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
+
       <div className="squares-containers">
         <div className="squares-headline">
           <span className="title">Featured Playlists</span>
