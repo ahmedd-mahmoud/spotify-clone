@@ -1,4 +1,5 @@
 import "./Login.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const handleLogin = () => {
@@ -31,9 +32,11 @@ const Login = () => {
         alt="spotify-logo"
         className="logo"
       />
-      <button className="login-button" onClick={handleLogin}>
-        Login
-      </button>
+      <Link to={"/"}>
+        <button className="login-button" onClick={handleLogin}>
+          Login
+        </button>
+      </Link>
     </div>
   );
 };

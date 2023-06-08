@@ -6,27 +6,34 @@ import { LuLibrary, LuPlus } from "react-icons/lu";
 import { BiRightArrowAlt } from "react-icons/bi";
 //styles
 import "./Sidebar.css";
+//hooks
 import { useStateProvider } from "../../Utils/StateProvider";
 import { reducerCases } from "../../Utils/Reducer";
+//router
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { updateData } = useStateProvider();
   return (
     <div className="sidebar">
       <div className="upper-sidebar">
-        <div
-          className="buttons"
-          onClick={() => {
-            updateData(true, reducerCases.MAIN_SCREEN);
-          }}
-        >
-          <MdHomeFilled className="icons" />
-          <span>Home</span>
-        </div>
-        <div className="buttons">
-          <MdSearch className="icons" />
-          <span>Search</span>
-        </div>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <div
+            className="buttons"
+            onClick={() => {
+              updateData(true, reducerCases.MAIN_SCREEN);
+            }}
+          >
+            <MdHomeFilled className="icons" />
+            <span>Home</span>
+          </div>
+        </Link>
+        <Link to={"/search"} style={{ textDecoration: "none" }}>
+          <div className="buttons">
+            <MdSearch className="icons" />
+            <span>Search</span>
+          </div>
+        </Link>
       </div>
       <div className="lower-sidebar">
         <div className="headline">
