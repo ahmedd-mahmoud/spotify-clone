@@ -162,6 +162,7 @@ const useFetchSpotifyData = (url, spotifyData) => {
   );
 
   const getData = useCallback(async () => {
+    const controller = new AbortController();
     setIsPending(true);
     try {
       const res = await fetch(url, {
@@ -170,6 +171,7 @@ const useFetchSpotifyData = (url, spotifyData) => {
           Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
+        signal: controller.signal,
       });
       if (!res.ok) {
         throw new Error(res.statusText);
@@ -203,6 +205,9 @@ const useFetchSpotifyData = (url, spotifyData) => {
         setError("Could not fetch the data");
       }
     }
+    return () => {
+      controller.abort();
+    };
   }, [
     getPlaylistsData,
     getUserData,
