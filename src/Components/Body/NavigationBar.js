@@ -5,7 +5,7 @@ import { useStateProvider } from "../../Utils/StateProvider";
 import useFetchSpotifyData from "../../Hooks/useFetchSpotifyData";
 import { useLocation } from "react-router";
 //constants
-import { reducerCases } from "../../Utils/Constants";
+import { SPOTIFY_URLs, reducerCases } from "../../Utils/Constants";
 import { SPOTIFY_DATA } from "../../Utils/Constants";
 //icons
 import { HiOutlineUserGroup } from "react-icons/hi";
@@ -14,7 +14,7 @@ import { MdSearch } from "react-icons/md";
 
 const Navbar = () => {
   const { userInfo, searchQuery, updateData } = useStateProvider();
-  useFetchSpotifyData("https://api.spotify.com/v1/me", SPOTIFY_DATA.userData);
+  useFetchSpotifyData(SPOTIFY_URLs.userURL, SPOTIFY_DATA.userData);
 
   useFetchSpotifyData(
     `https://api.spotify.com/v1/search?q=${searchQuery}&type=artist,playlist,track`,

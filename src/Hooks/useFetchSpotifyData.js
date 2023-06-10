@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useStateProvider } from "../Utils/StateProvider";
-import { reducerCases } from "../Utils/Constants";
+import { SPOTIFY_URLs, reducerCases } from "../Utils/Constants";
 import { SPOTIFY_DATA } from "../Utils/Constants";
-
-const searchURL = "https://api.spotify.com/v1/search";
 
 const useFetchSpotifyData = (url, spotifyData) => {
   const { token, updateData, selectedPlaylistId } = useStateProvider();
@@ -231,7 +229,7 @@ const useFetchSpotifyData = (url, spotifyData) => {
   ]);
 
   useEffect(() => {
-    if (url.slice(0, 33) === searchURL) {
+    if (url.slice(0, 33) === SPOTIFY_URLs.searchURL) {
       searchItems();
     } else {
       getData();

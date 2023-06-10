@@ -20,7 +20,7 @@ const Footer = () => {
   const state = playerState ? "play" : "pause";
 
   useFetchSpotifyData(
-    "https://api.spotify.com/v1/me/player/currently-playing",
+    SPOTIFY_URLs.currentlyPlayingURL,
     SPOTIFY_DATA.currentlyPlayingTrack
   );
 

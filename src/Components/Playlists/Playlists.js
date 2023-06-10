@@ -1,6 +1,6 @@
 //hooks
 import useFetchSpotifyData from "../../Hooks/useFetchSpotifyData";
-import { SPOTIFY_DATA } from "../../Utils/Constants";
+import { SPOTIFY_DATA, SPOTIFY_URLs } from "../../Utils/Constants";
 import { useStateProvider } from "../../Utils/StateProvider";
 import { reducerCases } from "../../Utils/Constants";
 //styles
@@ -9,10 +9,7 @@ import "./Playlists.css";
 const Playlists = () => {
   const { playlists, updateData } = useStateProvider();
 
-  useFetchSpotifyData(
-    "https://api.spotify.com/v1/me/playlists?limit=20&offset=0",
-    SPOTIFY_DATA.playlistsData
-  );
+  useFetchSpotifyData(SPOTIFY_URLs.playlistsURL, SPOTIFY_DATA.playlistsData);
 
   return (
     <div className="all-playlists">

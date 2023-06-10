@@ -4,7 +4,7 @@ import "./Body.css";
 import useFetchSpotifyData from "../../Hooks/useFetchSpotifyData";
 import { useStateProvider } from "../../Utils/StateProvider";
 //constants
-import { SPOTIFY_DATA } from "../../Utils/Constants";
+import { SPOTIFY_DATA, SPOTIFY_URLs } from "../../Utils/Constants";
 //components
 import Navbar from "./NavigationBar";
 import MainScreen from "./MainScreen";
@@ -15,7 +15,7 @@ const Body = () => {
     useStateProvider();
 
   useFetchSpotifyData(
-    `https://api.spotify.com/v1/playlists/${selectedPlaylistId}`,
+    SPOTIFY_URLs.playlistURL + selectedPlaylistId,
     SPOTIFY_DATA.selectedPlaylistData
   );
 

@@ -38,4 +38,16 @@ export const SPOTIFY_DATA = {
 
 export const SPOTIFY_URLs = {
   startPausePlaybackURL: "https://api.spotify.com/v1/me/player/",
+  currentlyPlayingURL: "https://api.spotify.com/v1/me/player/currently-playing",
+  playlistURL: "https://api.spotify.com/v1/playlists/",
+  playlistsURL: "https://api.spotify.com/v1/me/playlists?limit=20&offset=0",
+  featuredPlaylistsURL: "https://api.spotify.com/v1/browse/featured-playlists",
+  artistsURL:
+    "https://api.spotify.com/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2C57dN52uHvrHOxijzpIgu3E%2C1vCWHaC5f2uS3yhpwWbIA6",
+  albumsURL:
+    "https://api.spotify.com/v1/albums?ids=382ObEPsp2rxGrnsizN5TX%2C1A2GTWGtFfWp7KSQTwWOyo%2C2noRn2Aes5aoNVsU6iWThc",
+  podcastsURL:
+    "https://api.spotify.com/v1/shows?ids=5CfCWKI5pZ28U0uOzXkDHe%2C5as3aKmN2k11yfDDDSrvaZ",
+  userURL: "https://api.spotify.com/v1/me",
+  searchURL: "https://api.spotify.com/v1/search",
 };
