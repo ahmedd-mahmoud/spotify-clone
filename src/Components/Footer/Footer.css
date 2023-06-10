@@ -1,12 +1,37 @@
 .player {
   width: 1515px;
-  height: 60px;
+  height: 80px;
   color: white;
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 10px;
   background-color: #232323;
   display: flex;
-  justify-content: center;
+  gap: 200px;
+}
+
+.track {
+  display: flex;
   align-items: center;
+  gap: 20px;
+  margin-left: 20px;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.play-pause-button {
+  font-size: xx-large;
+}
+
+.next-skip-button {
+  font-size: 32px;
+}
+
+.shuffle-repeat-button {
+  font-size: 17px;
 }

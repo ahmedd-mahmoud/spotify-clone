@@ -17,6 +17,8 @@ export const initialState = {
   podcasts: null,
   searchQuery: "",
   searchResults: null,
+  currentlyPlayingTrack: null,
+  playerState: false,
 };
 
 export const reducerCases = {
@@ -32,6 +34,8 @@ export const reducerCases = {
   SET_PODCASTS: "SET_PODCASTS",
   SET_SEARCH_QUERY: "SET_SEARCH_QUERY",
   SET_SEARCH_RESULTS: "SET_SEARCH_RESULTS",
+  SET_TRACK_PLAYING: "SET_TRACK_PLAYING",
+  SET_PLAYER_STATE: "SET_PLAYER_STATE",
 };
 
 const reducer = (state, action) => {
@@ -71,6 +75,12 @@ const reducer = (state, action) => {
     }
     case reducerCases.SET_SEARCH_RESULTS: {
       return { ...state, searchResults: action.payload };
+    }
+    case reducerCases.SET_TRACK_PLAYING: {
+      return { ...state, currentlyPlayingTrack: action.payload };
+    }
+    case reducerCases.SET_PLAYER_STATE: {
+      return { ...state, playerState: action.payload };
     }
     default:
       return state;

@@ -13,6 +13,7 @@ export const SPOTIFY_DATA = {
   podcastsData: "podcastsData",
   searchQueryValue: "searchQueryValue",
   searchResults: "searchResults",
+  currentlyPlayingTrack: "currentlyPlayingTrack",
 };
 
 const searchURL = "https://api.spotify.com/v1/search";
@@ -161,6 +162,23 @@ const useFetchSpotifyData = (url, spotifyData) => {
     [token, url, updateData]
   );
 
+  const getCurrentTrackData = useCallback(
+    (data) => {
+      if (data !== "") {
+        const currentlyPlayingTrack = {
+          trackId: data.item.id,
+          trackName: data.item.name,
+          trackArtists: data.item.artists.map((artist) => artist.name),
+          trackImage: data.item.album.images[2].url,
+          trackDuration: data.item.duration_ms,
+          trackProgress: data.progress_ms,
+        };
+        updateData(currentlyPlayingTrack, reducerCases.SET_TRACK_PLAYING);
+      }
+    },
+    [updateData]
+  );
+
   const getData = useCallback(async () => {
     const controller = new AbortController();
     setIsPending(true);
@@ -196,6 +214,8 @@ const useFetchSpotifyData = (url, spotifyData) => {
         getAlbums(data);
       } else if (spotifyData === SPOTIFY_DATA.podcastsData) {
         getPodcasts(data);
+      } else if (spotifyData === SPOTIFY_DATA.currentlyPlayingTrack) {
+        getCurrentTrackData(data);
       }
     } catch (err) {
       if (err.name === "AbortError") {
@@ -217,6 +237,7 @@ const useFetchSpotifyData = (url, spotifyData) => {
     getAlbums,
     getArtists,
     getPodcasts,
+    getCurrentTrackData,
     spotifyData,
     token,
     url,
