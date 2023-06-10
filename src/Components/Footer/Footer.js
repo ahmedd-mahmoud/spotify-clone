@@ -1,5 +1,10 @@
 import useFetchSpotifyData from "../../Hooks/useFetchSpotifyData";
-import { SPOTIFY_DATA } from "../../Utils/Constants";
+import useUpdatePlayer from "../../Hooks/useUpdatePlayer";
+import {
+  SPOTIFY_DATA,
+  SPOTIFY_URLs,
+  reducerCases,
+} from "../../Utils/Constants";
 import { useStateProvider } from "../../Utils/StateProvider";
 import "./Footer.css";
 import {
@@ -11,10 +16,17 @@ import {
 import { CgPlayTrackPrev, CgPlayTrackNext } from "react-icons/cg";
 
 const Footer = () => {
-  const { currentlyPlayingTrack, playerState } = useStateProvider();
+  const { currentlyPlayingTrack, playerState, updateData } = useStateProvider();
+  const state = playerState ? "play" : "pause";
+
   useFetchSpotifyData(
     "https://api.spotify.com/v1/me/player/currently-playing",
     SPOTIFY_DATA.currentlyPlayingTrack
+  );
+
+  useUpdatePlayer(
+    SPOTIFY_URLs.startPausePlaybackURL + state,
+    SPOTIFY_DATA.playerStateValue
   );
 
   return (
@@ -41,9 +53,19 @@ const Footer = () => {
         <BsShuffle className="shuffle-repeat-button" />
         <CgPlayTrackPrev className="next-skip-button" />
         {playerState ? (
-          <BsFillPauseCircleFill className="play-pause-button" />
+          <BsFillPauseCircleFill
+            className="play-pause-button"
+            onClick={() =>
+              updateData(!playerState, reducerCases.SET_PLAYER_STATE)
+            }
+          />
         ) : (
-          <BsFillPlayCircleFill className="play-pause-button" />
+          <BsFillPlayCircleFill
+            className="play-pause-button"
+            onClick={() =>
+              updateData(!playerState, reducerCases.SET_PLAYER_STATE)
+            }
+          />
         )}
         <CgPlayTrackNext className="next-skip-button" />
         <BsRepeat className="shuffle-repeat-button" />

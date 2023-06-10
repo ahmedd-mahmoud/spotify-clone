@@ -33,4 +33,9 @@ export const SPOTIFY_DATA = {
   searchQueryValue: "searchQueryValue",
   searchResults: "searchResults",
   currentlyPlayingTrack: "currentlyPlayingTrack",
+  playerStateValue: "playerStateValue",
+};
+
+export const SPOTIFY_URLs = {
+  startPausePlaybackURL: "https://api.spotify.com/v1/me/player/",
 };
