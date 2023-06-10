@@ -1,8 +1,4 @@
-export const msToMinutes = (ms) => {
-  const min = Math.floor(ms / 60000);
-  const sec = ((ms % 60000) / 1000).toFixed(0);
-  return min + ":" + (sec < 10 ? "0" : "") + sec;
-};
+import { reducerCases } from "./Constants";
 
 export const initialState = {
   token: null,
@@ -19,23 +15,6 @@ export const initialState = {
   searchResults: null,
   currentlyPlayingTrack: null,
   playerState: false,
-};
-
-export const reducerCases = {
-  SET_TOKEN: "SET_TOKEN",
-  SET_PLAYLISTS: "SET_PLAYLISTS",
-  SET_USER: "SET_USER",
-  SET_PLAYLIST: "SET_PLAYLIST",
-  SET_PLAYLIST_ID: "SET_PLAYLIST_ID",
-  MAIN_SCREEN: "MAIN_SCREEN",
-  SET_FEATURED_PLAYLISTS: "SET_FEATURED_PLAYLISTS",
-  SET_ALBUMS: "SET_ALBUMS",
-  SET_ARTISTS: "SET_ARTISTS",
-  SET_PODCASTS: "SET_PODCASTS",
-  SET_SEARCH_QUERY: "SET_SEARCH_QUERY",
-  SET_SEARCH_RESULTS: "SET_SEARCH_RESULTS",
-  SET_TRACK_PLAYING: "SET_TRACK_PLAYING",
-  SET_PLAYER_STATE: "SET_PLAYER_STATE",
 };
 
 const reducer = (state, action) => {

@@ -5,8 +5,8 @@ import { useStateProvider } from "../../Utils/StateProvider";
 import useFetchSpotifyData from "../../Hooks/useFetchSpotifyData";
 import { useLocation } from "react-router";
 //constants
-import { SPOTIFY_DATA } from "../../Hooks/useFetchSpotifyData";
-import { reducerCases } from "../../Utils/Reducer";
+import { reducerCases } from "../../Utils/Constants";
+import { SPOTIFY_DATA } from "../../Utils/Constants";
 //icons
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";

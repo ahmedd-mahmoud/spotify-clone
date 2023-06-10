@@ -1,6 +1,5 @@
-import useFetchSpotifyData, {
-  SPOTIFY_DATA,
-} from "../../Hooks/useFetchSpotifyData";
+import useFetchSpotifyData from "../../Hooks/useFetchSpotifyData";
+import { SPOTIFY_DATA } from "../../Utils/Constants";
 import { useStateProvider } from "../../Utils/StateProvider";
 import "./Footer.css";
 import {

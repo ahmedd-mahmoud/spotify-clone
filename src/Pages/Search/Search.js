@@ -6,7 +6,7 @@ import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Body/NavigationBar";
 //hooks
 import { useStateProvider } from "../../Utils/StateProvider";
-import { msToMinutes } from "../../Utils/Reducer";
+import { msToMinutes } from "../../Utils/Constants";
 const Search = () => {
   const { searchResults, searchQuery } = useStateProvider();
 

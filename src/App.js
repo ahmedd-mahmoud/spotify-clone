@@ -10,7 +10,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Search from "./Pages/Search/Search";
 //constants
-import { reducerCases } from "./Utils/Reducer";
+import { reducerCases } from "./Utils/Constants";
 
 function App() {
   const { token, updateData } = useStateProvider();

@@ -2,9 +2,8 @@
 import "./Body.css";
 //hooks
 import { useStateProvider } from "../../Utils/StateProvider";
-import useFetchSpotifyData, {
-  SPOTIFY_DATA,
-} from "../../Hooks/useFetchSpotifyData";
+import useFetchSpotifyData from "../../Hooks/useFetchSpotifyData";
+import { SPOTIFY_DATA } from "../../Utils/Constants";
 
 const MainScreen = () => {
   const { featuredPlaylists, artists, albums, podcasts, playlists } =

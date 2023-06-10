@@ -1,20 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useStateProvider } from "../Utils/StateProvider";
-import { reducerCases } from "../Utils/Reducer";
-
-export const SPOTIFY_DATA = {
-  playlistsData: "playlistsData",
-  userData: "userData",
-  selectedPlaylistData: "selectedPlaylistData",
-  selectedPlaylistId: "selectedPlaylistId",
-  featuredPlaylistsData: "featuredPlaylistsData",
-  albumsData: "albumsData",
-  artistsData: "artistsData",
-  podcastsData: "podcastsData",
-  searchQueryValue: "searchQueryValue",
-  searchResults: "searchResults",
-  currentlyPlayingTrack: "currentlyPlayingTrack",
-};
+import { reducerCases } from "../Utils/Constants";
+import { SPOTIFY_DATA } from "../Utils/Constants";
 
 const searchURL = "https://api.spotify.com/v1/search";
 

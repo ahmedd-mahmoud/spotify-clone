@@ -2,7 +2,7 @@
 import "./Body.css";
 //hooks
 import { useStateProvider } from "../../Utils/StateProvider";
-import { msToMinutes } from "../../Utils/Reducer";
+import { msToMinutes } from "../../Utils/Constants";
 const PlaylistContents = () => {
   const { selectedPlaylist } = useStateProvider();
 

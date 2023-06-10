@@ -4,7 +4,7 @@ import "./Body.css";
 import useFetchSpotifyData from "../../Hooks/useFetchSpotifyData";
 import { useStateProvider } from "../../Utils/StateProvider";
 //constants
-import { SPOTIFY_DATA } from "../../Hooks/useFetchSpotifyData";
+import { SPOTIFY_DATA } from "../../Utils/Constants";
 //components
 import Navbar from "./NavigationBar";
 import MainScreen from "./MainScreen";

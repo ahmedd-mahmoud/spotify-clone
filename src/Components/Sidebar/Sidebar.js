@@ -8,7 +8,7 @@ import { BiRightArrowAlt } from "react-icons/bi";
 import "./Sidebar.css";
 //hooks
 import { useStateProvider } from "../../Utils/StateProvider";
-import { reducerCases } from "../../Utils/Reducer";
+import { reducerCases } from "../../Utils/Constants";
 //router
 import { Link } from "react-router-dom";
 
