@@ -70,6 +70,10 @@ const Footer = () => {
         <CgPlayTrackNext className="next-skip-button" />
         <BsRepeat className="shuffle-repeat-button" />
       </div>
+
+      <div className="volume">
+        <input type="range" min={0} max={100} className="volume-slider" />
+      </div>
     </div>
   );
 };

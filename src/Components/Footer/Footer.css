@@ -2,12 +2,12 @@
   width: 1515px;
   height: 80px;
   color: white;
-  margin-top: 10px;
-  margin-left: 10px;
+  margin: 10px 10px 10px 10px;
   border-radius: 10px;
   background-color: #232323;
   display: flex;
-  gap: 200px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .track {
@@ -34,4 +34,8 @@
 
 .shuffle-repeat-button {
   font-size: 17px;
+}
+
+.volume {
+  margin-right: 30px;
 }
