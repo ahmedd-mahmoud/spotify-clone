@@ -34,6 +34,7 @@ export const SPOTIFY_DATA = {
   searchResults: "searchResults",
   currentlyPlayingTrack: "currentlyPlayingTrack",
   playerStateValue: "playerStateValue",
+  volumeValue: "volumeValue",
 };
 
 export const SPOTIFY_URLs = {
@@ -50,4 +51,5 @@ export const SPOTIFY_URLs = {
     "https://api.spotify.com/v1/shows?ids=5CfCWKI5pZ28U0uOzXkDHe%2C5as3aKmN2k11yfDDDSrvaZ",
   userURL: "https://api.spotify.com/v1/me",
   searchURL: "https://api.spotify.com/v1/search",
+  volumeURL: "https://api.spotify.com/v1/me/player/volume?volume_percent=",
 };

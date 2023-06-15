@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useFetchSpotifyData from "../../Hooks/useFetchSpotifyData";
 import useUpdatePlayer from "../../Hooks/useUpdatePlayer";
 import {
@@ -18,6 +19,7 @@ import { CgPlayTrackPrev, CgPlayTrackNext } from "react-icons/cg";
 const Footer = () => {
   const { currentlyPlayingTrack, playerState, updateData } = useStateProvider();
   const state = playerState ? "play" : "pause";
+  const [volume, setVolume] = useState(100);
 
   useFetchSpotifyData(
     SPOTIFY_URLs.currentlyPlayingURL,
@@ -28,6 +30,8 @@ const Footer = () => {
     SPOTIFY_URLs.startPausePlaybackURL + state,
     SPOTIFY_DATA.playerStateValue
   );
+
+  useUpdatePlayer(SPOTIFY_URLs.volumeURL + volume, SPOTIFY_DATA.volumeValue);
 
   return (
     <div className="player">
@@ -72,7 +76,13 @@ const Footer = () => {
       </div>
 
       <div className="volume">
-        <input type="range" min={0} max={100} className="volume-slider" />
+        <input
+          type="range"
+          min={0}
+          max={100}
+          className="volume-slider"
+          onMouseUp={(e) => setVolume(e.target.value)}
+        />
       </div>
     </div>
   );
