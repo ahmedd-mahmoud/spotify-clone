@@ -8,7 +8,7 @@ import { SPOTIFY_DATA, SPOTIFY_URLs } from "../../Utils/Constants";
 //components
 import Navbar from "./NavigationBar";
 import MainScreen from "./MainScreen";
-import PlaylistContents from "./PlaylistDetails";
+import PlaylistDetails from "./PlaylistDetails";
 
 const Body = () => {
   const { selectedPlaylist, mainScreen, selectedPlaylistId } =
@@ -24,7 +24,7 @@ const Body = () => {
       <Navbar />
       {mainScreen && <MainScreen />}
 
-      {selectedPlaylist && !mainScreen && <PlaylistContents />}
+      {selectedPlaylist && !mainScreen && <PlaylistDetails />}
     </div>
   );
 };
