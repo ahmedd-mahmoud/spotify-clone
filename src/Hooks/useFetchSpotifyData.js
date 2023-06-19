@@ -159,6 +159,8 @@ const useFetchSpotifyData = (url, spotifyData) => {
           trackProgress: data.progress_ms,
         };
         updateData(currentlyPlayingTrack, reducerCases.SET_TRACK_PLAYING);
+      } else {
+        updateData(null, reducerCases.SET_TRACK_PLAYING);
       }
     },
     [updateData]

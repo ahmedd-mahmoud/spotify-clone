@@ -14,12 +14,25 @@ import {
   BsFillPauseCircleFill,
   BsRepeat,
 } from "react-icons/bs";
+import { BiVolumeFull } from "react-icons/bi";
 import { CgPlayTrackPrev, CgPlayTrackNext } from "react-icons/cg";
 
 const Footer = () => {
-  const { currentlyPlayingTrack, playerState, updateData } = useStateProvider();
+  const { currentlyPlayingTrack, playerState, updateData, token } =
+    useStateProvider();
   const state = playerState ? "play" : "pause";
   const [volume, setVolume] = useState(100);
+  const [isActive, setIsActive] = useState(false);
+
+  const ChangeTrack = async (type) => {
+    await fetch(SPOTIFY_URLs.playerURL + type, {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+    });
+  };
 
   useFetchSpotifyData(
     SPOTIFY_URLs.currentlyPlayingURL,
@@ -27,7 +40,7 @@ const Footer = () => {
   );
 
   useUpdatePlayer(
-    SPOTIFY_URLs.startPausePlaybackURL + state,
+    SPOTIFY_URLs.playerURL + state,
     SPOTIFY_DATA.playerStateValue
   );
 
@@ -55,27 +68,54 @@ const Footer = () => {
 
       <div className="player-controls">
         <BsShuffle className="shuffle-repeat-button" />
-        <CgPlayTrackPrev className="next-skip-button" />
-        {playerState ? (
-          <BsFillPauseCircleFill
-            className="play-pause-button"
-            onClick={() =>
-              updateData(!playerState, reducerCases.SET_PLAYER_STATE)
-            }
-          />
-        ) : (
-          <BsFillPlayCircleFill
-            className="play-pause-button"
-            onClick={() =>
-              updateData(!playerState, reducerCases.SET_PLAYER_STATE)
-            }
-          />
-        )}
-        <CgPlayTrackNext className="next-skip-button" />
+        <CgPlayTrackPrev
+          className="next-skip-button"
+          onClick={() => {
+            ChangeTrack("previous");
+          }}
+        />
+        <div className="play-pause-container">
+          {playerState ? (
+            <BsFillPauseCircleFill
+              className="play-pause-button"
+              style={{ fontSize: isActive ? "30px" : "xx-large" }}
+              onClick={() => {
+                updateData(!playerState, reducerCases.SET_PLAYER_STATE);
+              }}
+              onMouseDown={() => {
+                setIsActive(true);
+              }}
+              onMouseUp={() => {
+                setIsActive(false);
+              }}
+            />
+          ) : (
+            <BsFillPlayCircleFill
+              className="play-pause-button"
+              style={{ fontSize: isActive ? "30px" : "xx-large" }}
+              onClick={() =>
+                updateData(!playerState, reducerCases.SET_PLAYER_STATE)
+              }
+              onMouseDown={() => {
+                setIsActive(true);
+              }}
+              onMouseUp={() => {
+                setIsActive(false);
+              }}
+            />
+          )}
+        </div>
+        <CgPlayTrackNext
+          className="next-skip-button"
+          onClick={() => {
+            ChangeTrack("next");
+          }}
+        />
         <BsRepeat className="shuffle-repeat-button" />
       </div>
 
       <div className="volume">
+        <BiVolumeFull className="volume-button" />
         <input
           type="range"
           min={0}

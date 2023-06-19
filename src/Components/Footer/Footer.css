@@ -2,9 +2,8 @@
   width: 1515px;
   height: 80px;
   color: white;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 10px 0px 10px;
   border-radius: 10px;
-  background-color: #232323;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,8 +19,12 @@
 .player-controls {
   display: flex;
   align-items: center;
-
   gap: 20px;
+}
+
+.play-pause-container {
+  width: 35px;
+  height: 30px;
 }
 
 .play-pause-button {
@@ -30,12 +33,40 @@
 
 .next-skip-button {
   font-size: 32px;
+  color: #a1a1a1;
 }
 
 .shuffle-repeat-button {
   font-size: 17px;
+  color: #a1a1a1;
+}
+
+.next-skip-button:hover,
+.shuffle-repeat-button:hover {
+  color: white;
 }
 
 .volume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-right: 30px;
+}
+.volume-slider {
+  /* appearance: none; */
+  width: 120px;
+  height: 4px;
+  /* background-color: #a1a1a1; */
+  outline: none;
+  border-radius: 10px;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  /* appearance: none; */
+  /* background: red; */
+  cursor: pointer;
+}
+
+.volume-button {
+  font-size: 20px;
 }

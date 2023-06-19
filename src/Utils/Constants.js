@@ -35,10 +35,12 @@ export const SPOTIFY_DATA = {
   currentlyPlayingTrack: "currentlyPlayingTrack",
   playerStateValue: "playerStateValue",
   volumeValue: "volumeValue",
+  changeTrack: "changeTrack",
 };
 
 export const SPOTIFY_URLs = {
-  startPausePlaybackURL: "https://api.spotify.com/v1/me/player/",
+  playerURL: "https://api.spotify.com/v1/me/player/",
+  playURL: "https://api.spotify.com/v1/me/player/play",
   currentlyPlayingURL: "https://api.spotify.com/v1/me/player/currently-playing",
   playlistURL: "https://api.spotify.com/v1/playlists/",
   playlistsURL: "https://api.spotify.com/v1/me/playlists?limit=20&offset=0",
