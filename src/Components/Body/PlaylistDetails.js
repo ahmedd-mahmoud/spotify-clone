@@ -2,9 +2,47 @@
 import "./Body.css";
 //hooks
 import { useStateProvider } from "../../Utils/StateProvider";
-import { msToMinutes } from "../../Utils/Constants";
-const PlaylistContents = () => {
-  const { selectedPlaylist } = useStateProvider();
+import { SPOTIFY_URLs, msToMinutes, reducerCases } from "../../Utils/Constants";
+const PlaylistDetails = () => {
+  const { selectedPlaylist, token, updateData } = useStateProvider();
+
+  const PlayTrack = async (
+    trackId,
+    trackName,
+    trackArtists,
+    trackImage,
+    trackDuration,
+    trackContext_uri,
+    trackNumber
+  ) => {
+    const res = await fetch(SPOTIFY_URLs.playURL, {
+      method: "PUT",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+      Body: {
+        context_uri: trackContext_uri,
+        offset: {
+          position: trackNumber,
+        },
+        position_ms: 0,
+      },
+    });
+    if (res.status === 204) {
+      const currentlyPlayingTrack = {
+        trackId,
+        trackName,
+        trackArtists,
+        trackImage,
+        trackDuration,
+      };
+      updateData(currentlyPlayingTrack, reducerCases.SET_TRACK_PLAYING);
+      updateData(true, reducerCases.SET_PLAYER_STATE);
+    } else {
+      updateData(false, reducerCases.SET_PLAYER_STATE);
+    }
+  };
 
   return (
     <div className="playlist-content">
@@ -59,7 +97,21 @@ const PlaylistContents = () => {
               index
             ) => {
               return (
-                <div className="row" key={trackId}>
+                <div
+                  className="row"
+                  key={trackId}
+                  onClick={() => {
+                    PlayTrack(
+                      trackId,
+                      trackName,
+                      trackArtists,
+                      trackImage,
+                      trackDuration,
+                      trackContext_uri,
+                      trackNumber
+                    );
+                  }}
+                >
                   <div className="col-detail">
                     <div className="col">
                       <span>{index + 1}</span>
@@ -112,4 +164,4 @@ const PlaylistContents = () => {
   );
 };
 
-export default PlaylistContents;
+export default PlaylistDetails;
