@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const handleLogin = () => {
     const clientId = "abea8d10e9c74c6f951ad8afa0a1555d";
-    const redirectUrl = "http://localhost:3000";
+    const redirectUrl = "https://spotify-clone-ea626.web.app";
     const apiUrl = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-email",
