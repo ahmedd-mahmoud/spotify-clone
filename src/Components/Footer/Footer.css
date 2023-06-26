@@ -1,12 +1,13 @@
 .player {
-  width: 1515px;
-  height: 80px;
+  width: 100%;
+  height: 90px;
+  position: fixed;
+  bottom: 0;
   color: white;
-  margin: 10px 10px 0px 10px;
-  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: black;
 }
 
 .track {

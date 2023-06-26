@@ -35,6 +35,7 @@ const Sidebar = () => {
           </div>
         </Link>
       </div>
+
       <div className="lower-sidebar">
         <div className="headline">
           <div className="headline-part1">
